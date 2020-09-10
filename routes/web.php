@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::resource('users', UserController::class);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
