@@ -9,14 +9,14 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th><strong>Room Name</strong></th>
+                        <th><strong>Room Category</strong></th>
+                        <th><strong>Reserved</strong></th>
                     </tr>
 
                     @foreach($rooms as $room)
                         <tr>
-                            <td>
-                                <a href={{ url("rooms/{$room->id}")}}> {{ $room->name }} </a>
-                            </td>
+                            <td> {{ $room->category }} </td>
+                            <td> {{ $room->reserved ? 'Yes' : 'No' }} </td>
                         </tr>
                     @endforeach
                 </table>
