@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Room;
+use Auth;
 
 class HotelRoomController extends Controller
 {
@@ -33,7 +34,10 @@ class HotelRoomController extends Controller
 
     public function edit($hotel_id, $id)
     {
-        Room::findOrFail($id)->update(['reserved' => "1"]);
+        $room = Room::findOrFail($id);
+        $room->reserved = !$room->reserved;
+        $room->user()->associate(Auth::user());
+        $room->save();
 
         return redirect()->route('hotels.show', $hotel_id);
     }

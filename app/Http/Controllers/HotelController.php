@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Hotel;
+use App\User;
 
 class HotelController extends Controller
 {
@@ -29,7 +30,6 @@ class HotelController extends Controller
     {
         $hotel = Hotel::find($id);
         $rooms = $hotel->rooms;
-
         return view('hotels.show', compact('rooms', 'hotel'));
     }
 

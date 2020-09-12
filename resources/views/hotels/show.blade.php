@@ -23,7 +23,12 @@
                             <td> {{ $room->category }} </td>
                             <td> {{ $room->reserved ? 'Yes' : 'No' }} </td>
                             <td>
-                                @if(!$room->reserved)
+                                @if($room->reserved)
+                                    @if(Auth::user()->manager)
+                                        {{ "Reserved by {$room->user->name}" }}
+                                        <a href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">Cancel Reserve</a>
+                                    @endif
+                                @else
                                     <a href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">Reserve</a>
                                 @endif
                             </td>
