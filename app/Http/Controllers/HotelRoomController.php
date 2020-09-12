@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Room;
+
 class HotelRoomController extends Controller
 {
 
@@ -12,14 +14,16 @@ class HotelRoomController extends Controller
 
     }
 
-    public function create()
+    public function create($hotel_id)
     {
-        //
+        return view('rooms.create', compact('hotel_id'));
     }
 
-    public function store(Request $request)
+    public function store($hotel_id, Request $request)
     {
-        //
+        Room::create($request->all() + ['hotel_id' => $hotel_id]);
+
+        return redirect()->route('hotels.show', $hotel_id);
     }
 
     public function show($id)

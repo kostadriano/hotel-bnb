@@ -4,9 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            @if (Auth::user()->manager)
+                <div class="mb-2 d-flex justify-content-end">
+                    <a class="btn btn-primary" href="{{ route('hotels.rooms.create', $hotel->id)}}"> Create new Room </a>
+                </div>
+            @endif
 
+            <div class="card">
                 <table class="table table-striped">
                     <tr>
                         <th><strong>Room Category</strong></th>

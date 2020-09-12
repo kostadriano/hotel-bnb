@@ -27,9 +27,10 @@ class HotelController extends Controller
 
     public function show($id)
     {
-        $rooms = Hotel::find($id)->rooms;
+        $hotel = Hotel::find($id);
+        $rooms = $hotel->rooms;
 
-        return view('hotels.show', compact('rooms'));
+        return view('hotels.show', compact('rooms', 'hotel'));
     }
 
     public function edit($id)
