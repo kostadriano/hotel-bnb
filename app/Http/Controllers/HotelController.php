@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hotel;
 
 class HotelController extends Controller
 {
@@ -24,7 +25,9 @@ class HotelController extends Controller
 
     public function show($id)
     {
-        //
+        $rooms = Hotel::find($id)->rooms();
+
+        return view('hotels.show', compact('rooms'));
     }
 
     public function edit($id)

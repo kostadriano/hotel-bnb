@@ -9,13 +9,13 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th><strong>Hotel Name</strong></th>
+                        <th><strong>Room Name</strong></th>
                     </tr>
 
-                    @foreach($hotels as $hotel)
+                    @foreach($rooms as $room)
                         <tr>
                             <td>
-                                <a href={{ url("hotels/{$hotel->id}")}}> {{ $hotel->name }} </a>
+                                <a href={{ url("rooms/{$room->id}")}}> {{ $room->name }} </a>
                             </td>
                         </tr>
                     @endforeach
