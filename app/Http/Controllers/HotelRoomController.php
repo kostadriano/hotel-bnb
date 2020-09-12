@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Room;
 use Auth;
@@ -33,6 +34,12 @@ class HotelRoomController extends Controller
         $room->reserved = !$room->reserved;
         $room->user()->associate(Auth::user());
         $room->save();
+
+        if($room->reserved) {
+            Log::info("Room {$room->id} has been reserved for ".Auth::User()->name);
+        } else {
+            Log::info("Room {$room->id} reserve has been canceled");
+        }
 
         return redirect()->route('hotels.show', $hotel_id)->with('status', 'Reserve updated!');
     }
