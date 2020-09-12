@@ -51,6 +51,8 @@ class HotelController extends Controller
 
     public function destroy($id)
     {
+        Hotel::find($id)->delete();
 
+        return redirect('/');
     }
 }

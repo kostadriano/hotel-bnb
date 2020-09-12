@@ -7,7 +7,7 @@
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
-    @endif 
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
                 <div class="mb-2 d-flex justify-content-between">
@@ -18,7 +18,7 @@
                 </div>
 
             <div class="card">
-                <table class="table table-striped">
+                <table class="table table-striped mb-0">
                     <tr>
                         <th><strong>Room Category</strong></th>
                         <th><strong>Reserved</strong></th>
@@ -45,7 +45,7 @@
 
                             @if(Auth::user()->manager)
                             <td>
-                                <a class="btn btn-primary" href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">
+                                <a class="btn btn-primary py-0" href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">
                                     Edit Room
                                 </a>
                             </td>

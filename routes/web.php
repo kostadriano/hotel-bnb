@@ -18,8 +18,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::post('hotels/{hotel}', 'HotelController@update');
-
+Route::get('hotels/{hotel}/delete', 'HotelController@destroy');
 Route::resource('hotels', 'HotelController');
-Route::resource('hotels.rooms', 'HotelRoomController');
+
 Route::get('hotels/{hotel}/rooms/{room}/reserve', 'HotelRoomController@reserve');
 Route::post('hotels/{hotel}/rooms/{room}', 'HotelRoomController@update');
+Route::resource('hotels.rooms', 'HotelRoomController');
