@@ -45,6 +45,6 @@ class HotelController extends Controller
 
     public function destroy($id)
     {
-        //
+
     }
 }

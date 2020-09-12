@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif 
     <div class="row justify-content-center">
         <div class="col-md-8">
             @if (Auth::user()->manager)
@@ -16,6 +22,9 @@
                         <th><strong>Room Category</strong></th>
                         <th><strong>Reserved</strong></th>
                         <th></th>
+                        @if(Auth::user()->manager)
+                            <th>Operations</th>
+                        @endif
                     </tr>
 
                     @foreach($rooms as $room)
@@ -26,12 +35,20 @@
                                 @if($room->reserved)
                                     @if(Auth::user()->manager)
                                         {{ "Reserved by {$room->user->name}" }}
-                                        <a href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">Cancel Reserve</a>
+                                        <a href="{{url('hotels/'.$hotel->id.'/rooms/'.$room->id.'/reserve')}}">Cancel</a>
                                     @endif
                                 @else
-                                    <a href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">Reserve</a>
+                                    <a href="{{url('hotels/'.$hotel->id.'/rooms/'.$room->id.'/reserve')}}"> Reserve</a>
                                 @endif
                             </td>
+
+                            @if(Auth::user()->manager)
+                            <td>
+                                <a class="btn btn-primary" href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">
+                                    Edit Room
+                                </a>
+                            </td>
+                            @endif
                         </tr>
                     @endforeach
                 </table>

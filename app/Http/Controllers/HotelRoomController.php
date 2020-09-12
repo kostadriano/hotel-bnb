@@ -34,21 +34,33 @@ class HotelRoomController extends Controller
 
     public function edit($hotel_id, $id)
     {
+        $room = Room::find($id);
+        return view('rooms.edit', compact('room', 'hotel_id'));
+    }
+
+    public function reserve($hotel_id, $id)
+    {
         $room = Room::findOrFail($id);
         $room->reserved = !$room->reserved;
         $room->user()->associate(Auth::user());
         $room->save();
 
+        return redirect()->route('hotels.show', $hotel_id)->with('status', 'Reserve updated!');
+    }
+
+    public function update($hotel_id, Request $request, $id)
+    {
+        $room = Room::find($id);
+        $room->update($request->all());
+
         return redirect()->route('hotels.show', $hotel_id);
     }
 
-    public function update(Request $request, $id)
+    public function destroy($hotel_id, $id)
     {
-        //
-    }
+        $room = Room::find($id);
+        $room->delete();
 
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('hotels.show', $hotel_id)->with('status', 'Room deleted!');
     }
 }

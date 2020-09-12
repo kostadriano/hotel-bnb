@@ -19,3 +19,5 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('hotels', 'HotelController');
 Route::resource('hotels.rooms', 'HotelRoomController');
+Route::get('hotels/{hotel}/rooms/{room}/reserve', 'HotelRoomController@reserve');
+Route::post('hotels/{hotel}/rooms/{room}', 'HotelRoomController@update');
