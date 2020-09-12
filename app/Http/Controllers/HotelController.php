@@ -15,12 +15,14 @@ class HotelController extends Controller
 
     public function create()
     {
-        //
+        return view('hotels.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $hotel = Hotel::create($request->all());
+
+        return redirect()->route('hotels.show', [$hotel]);
     }
 
     public function show($id)
