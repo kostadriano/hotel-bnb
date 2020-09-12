@@ -31,9 +31,11 @@ class HotelRoomController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit($hotel_id, $id)
     {
-        //
+        Room::findOrFail($id)->update(['reserved' => "1"]);
+
+        return redirect()->route('hotels.show', $hotel_id);
     }
 
     public function update(Request $request, $id)

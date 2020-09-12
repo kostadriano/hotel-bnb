@@ -8,6 +8,7 @@ class Room extends Model
 {
   protected $fillable = [
     'category',
-    'hotel_id'
+    'hotel_id',
+    'reserved'
   ];
 }

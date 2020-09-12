@@ -15,12 +15,18 @@
                     <tr>
                         <th><strong>Room Category</strong></th>
                         <th><strong>Reserved</strong></th>
+                        <th></th>
                     </tr>
 
                     @foreach($rooms as $room)
                         <tr>
                             <td> {{ $room->category }} </td>
                             <td> {{ $room->reserved ? 'Yes' : 'No' }} </td>
+                            <td>
+                                @if(!$room->reserved)
+                                    <a href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">Reserve</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </table>
