@@ -48,6 +48,10 @@
                                 <a class="btn btn-primary py-0" href="{{route('hotels.rooms.edit', [$hotel->id, $room->id])}}">
                                     Edit Room
                                 </a>
+
+                                <a class="btn btn-danger py-0" href="{{url('hotels', [$hotel->id, 'rooms', $room->id, 'delete'])}}">
+                                    Delete Room
+                                </a>
                             </td>
                             @endif
                         </tr>

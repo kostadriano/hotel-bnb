@@ -22,5 +22,6 @@ Route::get('hotels/{hotel}/delete', 'HotelController@destroy');
 Route::resource('hotels', 'HotelController');
 
 Route::get('hotels/{hotel}/rooms/{room}/reserve', 'HotelRoomController@reserve');
+Route::get('hotels/{hotel}/rooms/{room}/delete', 'HotelRoomController@destroy');
 Route::post('hotels/{hotel}/rooms/{room}', 'HotelRoomController@update');
 Route::resource('hotels.rooms', 'HotelRoomController');

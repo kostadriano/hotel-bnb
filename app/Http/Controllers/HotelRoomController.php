@@ -9,12 +9,6 @@ use Auth;
 
 class HotelRoomController extends Controller
 {
-
-    public function index()
-    {
-
-    }
-
     public function create($hotel_id)
     {
         return view('rooms.create', compact('hotel_id'));
@@ -25,11 +19,6 @@ class HotelRoomController extends Controller
         Room::create($request->all() + ['hotel_id' => $hotel_id]);
 
         return redirect()->route('hotels.show', $hotel_id);
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($hotel_id, $id)
@@ -53,7 +42,7 @@ class HotelRoomController extends Controller
         $room = Room::find($id);
         $room->update($request->all());
 
-        return redirect()->route('hotels.show', $hotel_id);
+        return redirect()->route('hotels.show', $hotel_id)->with('status', 'Room updated!');
     }
 
     public function destroy($hotel_id, $id)
