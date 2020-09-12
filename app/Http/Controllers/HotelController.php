@@ -35,12 +35,18 @@ class HotelController extends Controller
 
     public function edit($id)
     {
-        //
+        $hotel = Hotel::find($id);
+
+        return view('hotels.edit',compact('hotel'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $hotel = Hotel::find($id);
+        $hotel->update($request->all());
+        $hotel->save();
+
+        return redirect()->route('hotels.show', [$hotel]);
     }
 
     public function destroy($id)

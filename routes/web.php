@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::post('hotels/{hotel}', 'HotelController@update');
+
 Route::resource('hotels', 'HotelController');
 Route::resource('hotels.rooms', 'HotelRoomController');
 Route::get('hotels/{hotel}/rooms/{room}/reserve', 'HotelRoomController@reserve');

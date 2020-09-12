@@ -10,11 +10,12 @@
     @endif 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (Auth::user()->manager)
-                <div class="mb-2 d-flex justify-content-end">
-                    <a class="btn btn-primary" href="{{ route('hotels.rooms.create', $hotel->id)}}"> Create new Room </a>
+                <div class="mb-2 d-flex justify-content-between">
+                    <h3>{{ $hotel->name}} </h3>
+                    @if (Auth::user()->manager)
+                        <a class="btn btn-primary" href="{{ route('hotels.rooms.create', $hotel->id)}}"> Create new Room </a>
+                    @endif
                 </div>
-            @endif
 
             <div class="card">
                 <table class="table table-striped">
